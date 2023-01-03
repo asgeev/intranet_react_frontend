@@ -1,8 +1,8 @@
-export const globalTheme = {
+export const baseTheme = {
   font: {
     size: {},
     weight: {
-      100: "100",
+      xs: "100",
       300: "300",
       500: "500",
       700: "700",

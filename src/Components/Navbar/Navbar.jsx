@@ -13,12 +13,13 @@ const NavBar = styled.div`
   }
 
   li {
-    font-weight: 300;
+    font-weight: 500;
     list-style: none;
+    font-size: 1.4rem;
   }
 `;
 
-const Navbar = () => {
+const Navbar = ({ setIsDarkTheme }) => {
   return (
     <NavBar>
       <ul>
@@ -36,6 +37,9 @@ const Navbar = () => {
         <li>Procedury</li>
         <li>Prosty język</li>
         <li>Struktura organizacyjna</li>
+        <button onClick={() => setIsDarkTheme((prev) => !prev)}>
+          Change theme
+        </button>
       </ul>
     </NavBar>
   );
