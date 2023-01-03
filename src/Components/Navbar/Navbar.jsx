@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const NavBar = styled.div`
   position: sticky;
@@ -24,7 +24,7 @@ const Navbar = ({ setIsDarkTheme }) => {
     <NavBar>
       <ul>
         <li>Spis telefonów</li>
-        <li>EZD</li>
+        <li> EZD </li>
         <li>CWU</li>
         <li>System kolejowy</li>
         <li>Portal pracowniczy</li>
