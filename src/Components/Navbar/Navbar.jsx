@@ -2,8 +2,20 @@ import styled from "styled-components";
 
 const NavBar = styled.div`
   position: sticky;
-  background-color: whitesmoke;
-  top: 0;
+  padding: 2rem;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  li {
+    font-weight: 300;
+    list-style: none;
+  }
 `;
 
 const Navbar = () => {
@@ -23,7 +35,7 @@ const Navbar = () => {
         <li>Raporty</li>
         <li>Procedury</li>
         <li>Prosty język</li>
-        <li>Struktura organizayjna</li>
+        <li>Struktura organizacyjna</li>
       </ul>
     </NavBar>
   );

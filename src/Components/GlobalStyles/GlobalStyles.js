@@ -15,12 +15,11 @@ html {
 }
 
 body {
-    background-color: ${({ theme }) => {
-      theme.body;
-    }};
     font-family: 'Roboto', sans-serif;
     margin: 0;
     font-size: 1.6rem;
     transition: all 0.50s linear;
+    background-color: ${({ theme }) => theme.color.bodyColor};
+    color: ${({ theme }) => theme.color.fontColor}
 }
 `;
