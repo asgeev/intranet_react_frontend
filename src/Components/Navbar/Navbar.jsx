@@ -19,11 +19,11 @@ const NavBar = styled.div`
   }
 `;
 
-const Navbar = ({ setIsDarkTheme }) => {
+function Navbar({ setIsDarkTheme }) {
   return (
     <NavBar>
       <ul>
-        <li>Spis telefonów</li>
+        <li> Spis telefonów </li>
         <li> EZD </li>
         <li>CWU</li>
         <li>System kolejowy</li>
@@ -37,12 +37,12 @@ const Navbar = ({ setIsDarkTheme }) => {
         <li>Procedury</li>
         <li>Prosty język</li>
         <li>Struktura organizacyjna</li>
-        <button onClick={() => setIsDarkTheme((prev) => !prev)}>
+        <button type="button" onClick={() => setIsDarkTheme((prev) => !prev)}>
           Change theme
         </button>
       </ul>
     </NavBar>
   );
-};
+}
 
 export default Navbar;
