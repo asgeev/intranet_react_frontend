@@ -1,22 +1,42 @@
 export const baseTheme = {
   font: {
-    size: {},
+    size: {
+      xxxs: '.9rem',
+      xxs: '1.2rem',
+      xs: '1.4rem',
+      s: '2.6rem',
+      m: '4.2rem',
+      l: '5 rem',
+      xl: '7.2rem',
+      xxl: '9.4rem',
+    },
     weight: {
-      xs: '100',
+      100: '100',
       300: '300',
       500: '500',
       700: '700',
     },
   },
+  containerSize: {
+    sm: '540px',
+    md: '720px',
+    lg: '960px',
+    xl: '1140px',
+    xxl: '1320px',
+  },
   mq: {
-    mobile: '@media (min-width: 320px)',
+    sm: '@media (min-width: 576px)',
+    md: '@media (min-width: 768px)',
+    lg: '@media (min-width: 992px)',
+    xl: '@media (min-width: 1200px)',
+    xxl: '@media (min-width: 1400px)',
   },
 };
 
 export const lightTheme = {
   color: {
     bodyColor: 'white',
-    textColor: 'black',
+    textColor: '#333333',
     primary: '',
     secondary: '',
   },

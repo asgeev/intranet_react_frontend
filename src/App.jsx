@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from './Components/GlobalStyles/GlobalStyles';
+import GlobalStyles from './Components/GlobalStyles/GlobalStyles';
 import 'normalize.css/normalize.css';
 import { darkTheme, lightTheme } from './assets/theme/theme';
-import Navbar from './Components/Navbar/Navbar';
+import Navigation from './Components/Navigation/Navigation';
 
-function App() {
+const App = () => {
   const localStorageTheme = JSON.parse(localStorage.getItem('isDarkTheme'));
 
   const [isDarkTheme, setIsDarkTheme] = useState(localStorageTheme);
@@ -17,9 +17,9 @@ function App() {
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <GlobalStyles />
-      <Navbar setIsDarkTheme={setIsDarkTheme} />
+      <Navigation setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />
     </ThemeProvider>
   );
-}
+};
 
 export default App;

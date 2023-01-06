@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
 
 *, *::before, *::after{
     box-sizing: border-box;
@@ -18,8 +18,11 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     font-size: 1.6rem;
-    /* transition: all 0.2s linear; */
+    text-rendering: optimizeLegibility;
+    transition: all 0.2s linear;
     background-color: ${({ theme }) => theme.color.bodyColor};
-    color: ${({ theme }) => theme.color.fontColor}
+    color: ${({ theme }) => theme.color.textColor}
 }
 `;
+
+export default GlobalStyles;
