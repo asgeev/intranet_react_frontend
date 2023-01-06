@@ -37,7 +37,7 @@ export const lightTheme = {
   color: {
     bodyColor: 'white',
     textColor: '#333333',
-    primary: '',
+    primary: '#333333',
     secondary: '',
   },
 };
@@ -46,7 +46,7 @@ export const darkTheme = {
   color: {
     bodyColor: '#2f2f2f',
     textColor: '#e5e5e5',
-    primary: '',
+    primary: '#e5e5e5',
     secondary: '',
   },
 };

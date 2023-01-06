@@ -1,16 +1,20 @@
 import styled from 'styled-components';
-import { FiCloudRain, FiMoon, FiSun } from 'react-icons/fi';
+import { FiMoon, FiSun } from 'react-icons/fi';
 
 export const NavBar = styled.nav`
-  position: sticky;
+  position: fixed;
+  top: 0;
+  position: -webkit-sticky;
+  background-color: ${({ theme }) => theme.color.bodyColor};
   padding: 1.8rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
-
-  img {
-    width: 34px;
-  }
+  align-items: center;
+  gap: 1rem;
+  height: 8rem;
+  z-index: 10;
+  ${({ theme }) => console.log(theme)}
 
   ul {
     display: flex;
@@ -23,7 +27,6 @@ export const NavBar = styled.nav`
     li {
       font-weight: 500;
       list-style: none;
-      font-size: 1.4rem;
     }
   }
 `;

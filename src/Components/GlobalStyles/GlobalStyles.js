@@ -19,7 +19,7 @@ body {
     margin: 0;
     font-size: 1.6rem;
     text-rendering: optimizeLegibility;
-    transition: all 0.2s linear;
+    /* transition: all 0.2s linear; */
     background-color: ${({ theme }) => theme.color.bodyColor};
     color: ${({ theme }) => theme.color.textColor}
 }
