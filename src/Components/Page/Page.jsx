@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 const PageWrapper = styled.div`
@@ -10,6 +11,17 @@ const PageWrapper = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const Page = () => <PageWrapper>Page</PageWrapper>;
+const Page = () => {
+  const { title } = useParams();
+
+  return (
+    <>
+      <PageWrapper>
+        <h1>{title}</h1>
+      </PageWrapper>
+      <Outlet />
+    </>
+  );
+};
 
 export default Page;

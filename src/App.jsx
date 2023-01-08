@@ -32,7 +32,7 @@ const App = () => {
 
         <Routes>
           <Route path="/" element={<Articles />} />
-          <Route path="/page" element={<Page />} />
+          <Route path="page/:id" element={<Page />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </ThemeProvider>

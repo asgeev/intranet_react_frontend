@@ -15,20 +15,7 @@ export const NavBar = styled.nav`
   height: 8rem;
   z-index: 10;
   ${({ theme }) => console.log(theme)}
-
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    li {
-      font-weight: 500;
-      list-style: none;
-    }
-  }
+  transition: all 0.5 ease-in-out;
 `;
 
 export const StyledFiMoon = styled(FiMoon)`

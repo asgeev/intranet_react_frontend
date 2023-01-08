@@ -5,14 +5,27 @@ import { NavLink } from 'react-router-dom';
 import { StyledFiMoon, StyledFiSun, NavBar } from './Navigation.styled';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
-const navigation = [
-  'Spis telefonów',
-  'EZD',
-  'CWU',
-  'System kolejowy',
-  'Portal pracowniczy',
-  'Lista obecności',
-  'Adresy innych stron',
+const navigationApi = [
+  {
+    title: 'Page 1',
+    path: 'page/page_1',
+  },
+  {
+    title: 'Page 2',
+    path: 'page/page_2',
+  },
+  {
+    title: 'Page 3',
+    path: 'page/page_3',
+  },
+  {
+    title: 'Page 4',
+    path: 'page/page_4',
+  },
+  {
+    title: 'Page 5',
+    path: 'page/page_5',
+  },
 ];
 
 const RightSection = styled.div`
@@ -42,15 +55,9 @@ const Menu = styled.div`
     position: static;
     display: flex;
     background-color: transparent;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    /* align-items: center; */
+    /* justify-content: center; */
     height: 100%;
-
-    ul {
-      flex-direction: row;
-    }
   }
 `;
 
@@ -58,7 +65,14 @@ const MenuItems = styled.ul`
   /* display: flex; */
   list-style: none;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-direction: column;
+
+  ${({ theme }) => theme.mq.lg} {
+    flex-direction: row;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -88,15 +102,11 @@ const Navigation = ({ setIsDarkTheme, isDarkTheme }) => {
       </StyledNavLink>
       <Menu isOpen={isOpen}>
         <MenuItems>
-          {/* {navigation.map((element) => (
-            <li key={element}>{element}</li>
-          ))} */}
-          <StyledNavLink to="/page" onClick={toggleNavigation}>
-            Page
-          </StyledNavLink>
-          <StyledNavLink to="/pagesafasf" onClick={toggleNavigation}>
-            Colkolwiek
-          </StyledNavLink>
+          {navigationApi.map(({ title, path }) => (
+            <StyledNavLink key={title} to={path} onClick={toggleNavigation}>
+              {title}
+            </StyledNavLink>
+          ))}
         </MenuItems>
       </Menu>
       <RightSection>
