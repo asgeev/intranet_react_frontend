@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
 
 *, *::before, *::after{
     box-sizing: border-box;
@@ -23,6 +23,4 @@ body {
     background-color: ${({ theme }) => theme.color.bodyColor};
     color: ${({ theme }) => theme.color.textColor}
 }
-`;
-
-export default GlobalStyles;
+`
