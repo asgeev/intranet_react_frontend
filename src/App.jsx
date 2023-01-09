@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './Components/GlobalStyles/GlobalStyles';
 import 'normalize.css/normalize.css';
@@ -8,6 +8,7 @@ import Navigation from './Components/Navigation/Navigation';
 import Articles from './Components/Articles/Articles';
 import Page from './Components/Page/Page';
 import PageNotFound from './Components/PageNotFound/PageNotFound';
+import Article from './Components/Article/Article';
 
 const App = () => {
   const localStorageTheme = JSON.parse(localStorage.getItem('isDarkTheme'));
@@ -29,12 +30,13 @@ const App = () => {
       >
         <GlobalStyles />
         <Navigation setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />
-
         <Routes>
           <Route path="/" element={<Articles />} />
-          <Route path="page/:id" element={<Page />} />
+          <Route path="article/:slug" element={<Article />} />
+          <Route path="page/:slug" element={<Page />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
+        <Outlet />
       </ThemeProvider>
     </BrowserRouter>
   );

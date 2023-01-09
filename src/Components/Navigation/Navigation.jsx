@@ -6,26 +6,13 @@ import { StyledFiMoon, StyledFiSun, NavBar } from './Navigation.styled';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 const navigationApi = [
-  {
-    title: 'Page 1',
-    path: 'page/page_1',
-  },
-  {
-    title: 'Page 2',
-    path: 'page/page_2',
-  },
-  {
-    title: 'Page 3',
-    path: 'page/page_3',
-  },
-  {
-    title: 'Page 4',
-    path: 'page/page_4',
-  },
-  {
-    title: 'Page 5',
-    path: 'page/page_5',
-  },
+  { title: 'Page 1', path: 'page/page_1', slug: 'page_1' },
+  { title: 'Page 2', path: 'page/page_2', slug: 'page_2' },
+  { title: 'Page 3', path: 'page/page_3', slug: 'page_3' },
+  { title: 'Page 4', path: 'page/page_4', slug: 'page_4' },
+  { title: 'Page 5', path: 'page/page_5', slug: 'page_5' },
+  { title: 'Page 6', path: 'page/page_6', slug: 'page_6' },
+  { title: 'Page 7', path: 'page/page_7', slug: 'page_7' },
 ];
 
 const RightSection = styled.div`
@@ -77,11 +64,9 @@ const MenuItems = styled.ul`
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  color: ${({ theme }) => theme.color.textColor};
+  /* color: ${({ theme }) => theme.color.textColor}; */
 
-  &:active {
-    color: red;
-  }
+  color: ${({ isActive }) => (isActive ? 'red' : 'blue')};
 `;
 
 const Navigation = ({ setIsDarkTheme, isDarkTheme }) => {
@@ -91,7 +76,6 @@ const Navigation = ({ setIsDarkTheme, isDarkTheme }) => {
   };
 
   const toggleNavigation = () => {
-    console.log(isOpen);
     setIsOpen((prev) => !prev);
   };
 
@@ -102,8 +86,12 @@ const Navigation = ({ setIsDarkTheme, isDarkTheme }) => {
       </StyledNavLink>
       <Menu isOpen={isOpen}>
         <MenuItems>
-          {navigationApi.map(({ title, path }) => (
-            <StyledNavLink key={title} to={path} onClick={toggleNavigation}>
+          {navigationApi.map(({ title, slug }) => (
+            <StyledNavLink
+              key={title}
+              to={`page/${slug}`}
+              onClick={toggleNavigation}
+            >
               {title}
             </StyledNavLink>
           ))}

@@ -12,15 +12,12 @@ const PageWrapper = styled.div`
   justify-content: center;
 `;
 const Page = () => {
-  const { title } = useParams();
+  const { slug } = useParams();
 
   return (
-    <>
-      <PageWrapper>
-        <h1>{title}</h1>
-      </PageWrapper>
-      <Outlet />
-    </>
+    <PageWrapper>
+      <h1>{slug}</h1>
+    </PageWrapper>
   );
 };
 

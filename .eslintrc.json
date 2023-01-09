@@ -29,6 +29,9 @@
         "namedComponents": "arrow-function",
         "unnamedComponents": "arrow-function"
       }
-    ]
+    ],
+    "arrow-body-style": "off",
+    "prefer-arrow-callback": "off",
+    "object-curly-newline": ["error", { "minProperties": 5 }]
   }
 }
