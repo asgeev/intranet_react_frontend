@@ -1,6 +1,6 @@
-import React from 'react'
-import { Outlet, useParams } from 'react-router-dom'
-import styled from 'styled-components'
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 const PageWrapper = styled.div`
     width: 100%;
@@ -10,13 +10,20 @@ const PageWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-`
+`;
 export const Page = () => {
-    const { slug } = useParams()
+    const [content, setContent] = useState([]);
+    const { slug } = useParams();
+
+    useEffect(() => {
+        fetch(`http://localhost:1337/api/pages?filters[slug][$eq]=${slug}`)
+            .then((response) => response.json())
+            .then((data) => setContent({ data }));
+    }, []);
 
     return (
         <PageWrapper>
-            <h1>{slug}</h1>
+            <h1>{console.log(content)}</h1>
         </PageWrapper>
-    )
-}
+    );
+};

@@ -1,23 +1,23 @@
-import { useState, useEffect } from 'react'
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
-import { ThemeProvider } from 'styled-components'
-import { GlobalStyles } from './Components/GlobalStyles/GlobalStyles'
-import 'normalize.css/normalize.css'
-import { darkTheme, lightTheme, baseTheme } from './assets/theme/theme'
-import { Navigation } from './Components/Navigation/Navigation'
-import { Articles } from './Components/Articles/Articles'
-import { Page } from './Components/Page/Page'
-import { PageNotFound } from './Components/PageNotFound/PageNotFound'
-import { Article } from './Components/Article/Article'
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from './Components/GlobalStyles/GlobalStyles';
+import 'normalize.css/normalize.css';
+import { darkTheme, lightTheme, baseTheme } from './assets/theme/theme';
+import { Navigation } from './Components/Navigation/Navigation';
+import { Articles } from './Components/Articles/Articles';
+import { Page } from './Components/Page/Page';
+import { PageNotFound } from './Components/PageNotFound/PageNotFound';
+import { Article } from './Components/Article/Article';
 
 const App = () => {
-    const localStorageTheme = JSON.parse(localStorage.getItem('isDarkTheme'))
+    const localStorageTheme = JSON.parse(localStorage.getItem('isDarkTheme'));
 
-    const [isDarkTheme, setIsDarkTheme] = useState(localStorageTheme)
+    const [isDarkTheme, setIsDarkTheme] = useState(localStorageTheme);
 
     useEffect(() => {
-        localStorage.setItem('isDarkTheme', JSON.stringify(isDarkTheme))
-    }, [isDarkTheme])
+        localStorage.setItem('isDarkTheme', JSON.stringify(isDarkTheme));
+    }, [isDarkTheme]);
 
     return (
         <BrowserRouter>
@@ -26,8 +26,7 @@ const App = () => {
                     isDarkTheme
                         ? { ...darkTheme, ...baseTheme }
                         : { ...lightTheme, ...baseTheme }
-                }
-            >
+                }>
                 <GlobalStyles />
                 <Navigation
                     setIsDarkTheme={setIsDarkTheme}
@@ -42,7 +41,7 @@ const App = () => {
                 <Outlet />
             </ThemeProvider>
         </BrowserRouter>
-    )
-}
+    );
+};
 
-export default App
+export default App;

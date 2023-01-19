@@ -1,19 +1,9 @@
-import styled from 'styled-components'
-import { useState } from 'react'
-import { FiCloudRain } from 'react-icons/fi'
-import { NavLink } from 'react-router-dom'
-import { StyledFiMoon, StyledFiSun, NavBar } from './Navigation.styled'
-import { BurgerMenu } from '../BurgerMenu/BurgerMenu'
-
-const navigationApi = [
-    { title: 'Page 1', path: 'page/page_1', slug: 'page_1' },
-    { title: 'Page 2', path: 'page/page_2', slug: 'page_2' },
-    { title: 'Page 3', path: 'page/page_3', slug: 'page_3' },
-    { title: 'Page 4', path: 'page/page_4', slug: 'page_4' },
-    { title: 'Page 5', path: 'page/page_5', slug: 'page_5' },
-    { title: 'Page 6', path: 'page/page_6', slug: 'page_6' },
-    { title: 'Page 7', path: 'page/page_7', slug: 'page_7' },
-]
+import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import { FiCloudRain } from 'react-icons/fi';
+import { NavLink } from 'react-router-dom';
+import { StyledFiMoon, StyledFiSun, NavBar } from './Navigation.styled';
+import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 
 const RightSection = styled.div`
     display: flex;
@@ -21,7 +11,7 @@ const RightSection = styled.div`
     justify-content: center;
     align-items: center;
     gap: 2rem;
-`
+`;
 
 const Menu = styled.div`
     display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
@@ -46,7 +36,7 @@ const Menu = styled.div`
         /* justify-content: center; */
         height: 100%;
     }
-`
+`;
 
 const MenuItems = styled.ul`
     /* display: flex; */
@@ -60,7 +50,7 @@ const MenuItems = styled.ul`
     ${({ theme }) => theme.mq.lg} {
         flex-direction: row;
     }
-`
+`;
 
 const StyledNavLink = styled(NavLink)`
     text-decoration: none;
@@ -69,17 +59,27 @@ const StyledNavLink = styled(NavLink)`
     &.active {
         color: red;
     }
-`
+`;
 
 export const Navigation = ({ setIsDarkTheme, isDarkTheme }) => {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+    const [navigation, setNavigation] = useState([]);
+
     const toggleIsDark = () => {
-        setIsDarkTheme((prev) => !prev)
-    }
+        setIsDarkTheme((prev) => !prev);
+    };
 
     const toggleNavigation = () => {
-        setIsOpen((prev) => !prev)
-    }
+        setIsOpen((prev) => !prev);
+    };
+
+    useEffect(() => {
+        fetch(
+            'http://localhost:1337/api/navigation/render/main-navigation?type=TREE'
+        )
+            .then((response) => response.json())
+            .then((data) => setNavigation(data));
+    }, []);
 
     return (
         <NavBar>
@@ -88,12 +88,11 @@ export const Navigation = ({ setIsDarkTheme, isDarkTheme }) => {
             </StyledNavLink>
             <Menu isOpen={isOpen}>
                 <MenuItems>
-                    {navigationApi.map(({ title, slug }) => (
+                    {navigation.map(({ id, title, slug }) => (
                         <StyledNavLink
-                            key={title}
+                            key={id}
                             to={`page/${slug}`}
-                            onClick={toggleNavigation}
-                        >
+                            onClick={toggleNavigation}>
                             {title}
                         </StyledNavLink>
                     ))}
@@ -108,5 +107,5 @@ export const Navigation = ({ setIsDarkTheme, isDarkTheme }) => {
                 <BurgerMenu toggleNavigation={toggleNavigation} />
             </RightSection>
         </NavBar>
-    )
-}
+    );
+};

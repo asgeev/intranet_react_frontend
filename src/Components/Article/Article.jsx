@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom'
-import styled from 'styled-components'
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
     /* margin-top: 8rem; */
@@ -7,10 +7,10 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-`
+`;
 
 export const Article = () => {
-    const { slug } = useParams()
+    const { slug } = useParams();
 
-    return <Wrapper>{slug}</Wrapper>
-}
+    return <Wrapper>{slug}</Wrapper>;
+};

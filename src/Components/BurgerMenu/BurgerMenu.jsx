@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const StyledBurger = styled.button`
     left: 2rem;
@@ -28,7 +28,7 @@ const StyledBurger = styled.button`
     ${({ theme }) => theme.mq.lg} {
         display: none;
     }
-`
+`;
 
 export const BurgerMenu = ({ toggleNavigation }) => (
     <StyledBurger onClick={toggleNavigation}>
@@ -36,4 +36,4 @@ export const BurgerMenu = ({ toggleNavigation }) => (
         <div />
         <div />
     </StyledBurger>
-)
+);

@@ -1,135 +1,148 @@
-import { NavLink, Outlet } from 'react-router-dom'
-import styled from 'styled-components'
+import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
-const articles = [
-    {
-        title: 'Lorem ipsum',
-        content: '',
-        createdBy: 'Adam Szymański',
-        slug: 'lorem_ipsum',
-        userAvatarUrl:
-            'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
-    },
-    {
-        title: 'Lorem ipsum',
-        content: '',
-        createdBy: 'Adam Szymański',
-        slug: 'lorem_ipsum',
-        userAvatarUrl:
-            'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
-    },
-    {
-        title: 'Lorem ipsum',
-        content: '',
-        createdBy: 'Adam Szymański',
-        slug: 'lorem_ipsum',
-        userAvatarUrl:
-            'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
-    },
-    {
-        title: 'Lorem ipsum',
-        content: '',
-        createdBy: 'Adam Szymański',
-        slug: 'lorem_ipsum',
-        userAvatarUrl:
-            'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
-    },
-    {
-        title: 'Lorem ipsum',
-        content: '',
-        createdBy: 'Adam Szymański',
-        slug: 'lorem_ipsum',
-        userAvatarUrl:
-            'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
-    },
-    {
-        title: 'Lorem ipsum',
-        content: '',
-        createdBy: 'Adam Szymański',
-        slug: 'lorem_ipsum',
-        userAvatarUrl:
-            'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
-    },
-    {
-        title: 'Lorem ipsum',
-        content: '',
-        createdBy: 'Adam Szymański',
-        slug: 'lorem_ipsum',
-        userAvatarUrl:
-            'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
-    },
-    {
-        title: 'Lorem ipsum',
-        content: '',
-        createdBy: 'Adam Szymański',
-        slug: 'lorem_ipsum',
-        userAvatarUrl:
-            'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
-    },
-    {
-        title: 'Lorem ipsum',
-        content: '',
-        createdBy: 'Adam Szymański',
-        slug: 'lorem_ipsum',
-        userAvatarUrl:
-            'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
-    },
-    {
-        title: 'Lorem ipsum',
-        content: '',
-        createdBy: 'Adam Szymański',
-        slug: 'lorem_ipsum',
-        userAvatarUrl:
-            'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
-    },
-    {
-        title: 'Lorem ipsum',
-        content: '',
-        createdBy: 'Adam Szymański',
-        slug: 'lorem_ipsum',
-        userAvatarUrl:
-            'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
-    },
-    {
-        title: 'Lorem ipsum',
-        content: '',
-        createdBy: 'Adam Szymański',
-        slug: 'lorem_ipsum',
-        userAvatarUrl:
-            'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
-    },
-    {
-        title: 'Lorem ipsum',
-        content: '',
-        createdBy: 'Adam Szymański',
-        slug: 'lorem_ipsum',
-        userAvatarUrl:
-            'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
-    },
-]
+// const articles = [
+//     {
+//         title: 'Lorem ipsum',
+//         content: '',
+//         createdBy: 'Adam Szymański',
+//         slug: 'lorem_ipsum',
+//         userAvatarUrl:
+//             'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
+//     },
+//     {
+//         title: 'Lorem ipsum',
+//         content: '',
+//         createdBy: 'Adam Szymański',
+//         slug: 'lorem_ipsum',
+//         userAvatarUrl:
+//             'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
+//     },
+//     {
+//         title: 'Lorem ipsum',
+//         content: '',
+//         createdBy: 'Adam Szymański',
+//         slug: 'lorem_ipsum',
+//         userAvatarUrl:
+//             'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
+//     },
+//     {
+//         title: 'Lorem ipsum',
+//         content: '',
+//         createdBy: 'Adam Szymański',
+//         slug: 'lorem_ipsum',
+//         userAvatarUrl:
+//             'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
+//     },
+//     {
+//         title: 'Lorem ipsum',
+//         content: '',
+//         createdBy: 'Adam Szymański',
+//         slug: 'lorem_ipsum',
+//         userAvatarUrl:
+//             'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
+//     },
+//     {
+//         title: 'Lorem ipsum',
+//         content: '',
+//         createdBy: 'Adam Szymański',
+//         slug: 'lorem_ipsum',
+//         userAvatarUrl:
+//             'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
+//     },
+//     {
+//         title: 'Lorem ipsum',
+//         content: '',
+//         createdBy: 'Adam Szymański',
+//         slug: 'lorem_ipsum',
+//         userAvatarUrl:
+//             'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
+//     },
+//     {
+//         title: 'Lorem ipsum',
+//         content: '',
+//         createdBy: 'Adam Szymański',
+//         slug: 'lorem_ipsum',
+//         userAvatarUrl:
+//             'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
+//     },
+//     {
+//         title: 'Lorem ipsum',
+//         content: '',
+//         createdBy: 'Adam Szymański',
+//         slug: 'lorem_ipsum',
+//         userAvatarUrl:
+//             'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
+//     },
+//     {
+//         title: 'Lorem ipsum',
+//         content: '',
+//         createdBy: 'Adam Szymański',
+//         slug: 'lorem_ipsum',
+//         userAvatarUrl:
+//             'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
+//     },
+//     {
+//         title: 'Lorem ipsum',
+//         content: '',
+//         createdBy: 'Adam Szymański',
+//         slug: 'lorem_ipsum',
+//         userAvatarUrl:
+//             'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
+//     },
+//     {
+//         title: 'Lorem ipsum',
+//         content: '',
+//         createdBy: 'Adam Szymański',
+//         slug: 'lorem_ipsum',
+//         userAvatarUrl:
+//             'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
+//     },
+//     {
+//         title: 'Lorem ipsum',
+//         content: '',
+//         createdBy: 'Adam Szymański',
+//         slug: 'lorem_ipsum',
+//         userAvatarUrl:
+//             'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png',
+//     },
+// ];
 
 const ArticlesWrapper = styled.div`
     margin-top: 8rem;
-`
+    max-width: ${({ theme }) => theme.containerSize.sm};
+`;
 
 const StyledArticleCard = styled.div`
-    background-color: red;
-`
+    background-color: white;
+    /* max-width: 600px; */
+`;
 
 const ArticleCard = ({ article }) => (
     <StyledArticleCard>
-        <NavLink to={`article/${article.slug}`}>
-            <h1>{article.title}</h1>
+        <NavLink to={`article/${article.attributes.slug}`}>
+            <h1>{article.attributes.title}</h1>
         </NavLink>
-        <p>{article.content}</p>
-        <p>{article.createdBy}</p>
     </StyledArticleCard>
-)
+);
 
-export const Articles = () => (
-    <ArticlesWrapper>
-        {articles.map((article) => {
-            return <ArticleCard key={article.slug} article={article} />
-        })}
-    </ArticlesWrapper>
-)
+export const Articles = () => {
+    const [articles, setArticles] = useState([]);
+
+    useEffect(() => {
+        fetch(
+            `http://localhost:1337/api/articles?populate[cover_image][populate][0]=cover_image&fields[0]=title,slug&pagination[page]=1`
+        )
+            .then((response) => response.json())
+            .then((res) => setArticles(res.data));
+    }, []);
+
+    return (
+        <ArticlesWrapper>
+            {articles.map((article) => {
+                return <ArticleCard key={article.id} article={article} />;
+            })}
+        </ArticlesWrapper>
+    );
+};

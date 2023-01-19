@@ -27,7 +27,7 @@
     "no-unused-vars": "warn",
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off",
-    "object-curly-newline": ["warn", { "minProperties": 5}],
+    "object-curly-newline": ["warn", { "minProperties": 2}],
     "no-useless-escape": "off",
     "import/prefer-default-export": "off",
     "import/no-default-export": "warn",
@@ -39,6 +39,7 @@
     "react/destructuring-assignment": "warn",
     "no-debugger": "off",
     "jsx-a11y/label-has-associated-control": "warn",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "react-hooks/exhaustive-deps": "off"
   }
 }
