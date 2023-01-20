@@ -4,11 +4,8 @@ import { Slider } from '../Slider/Slider';
 import { Widgets } from '../Widgets/Widgets';
 
 const HomeWrapper = styled.div`
-    background-color: red;
-    height: calc(100vh - 8rem);
-    margin-top: 8rem;
-    display: flex;
-    flex-direction: column;
+    margin-top: ${({ theme }) => theme.navigation.height};
+    gap: 2rem;
 `;
 
 export const Home = () => {

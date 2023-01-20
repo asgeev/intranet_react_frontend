@@ -2,9 +2,14 @@ import styled from 'styled-components';
 
 const WidgetsWrapper = styled.div`
     background-color: green;
-    flex-grow: 1;
+    min-height: 150px;
 `;
 
 export const Widgets = () => {
-    return <WidgetsWrapper>Widgets</WidgetsWrapper>;
+    return (
+        <WidgetsWrapper>
+            {console.log('HOST:', import.meta.env.VITE_API_ADRESS)}
+            Widgets
+        </WidgetsWrapper>
+    );
 };

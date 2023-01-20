@@ -12,7 +12,7 @@ export const NavBar = styled.nav`
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    height: 8rem;
+    min-height: ${({ theme }) => theme.navigation.height};
     z-index: 10;
     transition: all 0.5 ease-in-out;
 `;

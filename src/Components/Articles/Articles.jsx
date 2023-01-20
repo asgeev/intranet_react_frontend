@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { useAxios } from '../../Hooks/useAxios';
 
 // const articles = [
 //     {
@@ -110,9 +111,7 @@ import styled from 'styled-components';
 // ];
 
 const ArticlesWrapper = styled.div`
-    margin-top: 8rem;
-    max-width: ${({ theme }) => theme.containerSize.sm};
-    flex-grow: 3;
+    background-color: red;
 `;
 
 const StyledArticleCard = styled.div`
@@ -129,20 +128,25 @@ const ArticleCard = ({ article }) => (
 
 export const Articles = () => {
     const [articles, setArticles] = useState([]);
+    const query = `api/articles?populate[cover_image][populate][0]=cover_image&fields[0]=title,slug&pagination[page]=1`;
+    const { response, loading, error } = useAxios({
+        url: query,
+    });
 
     useEffect(() => {
-        fetch(
-            `http://localhost:1337/api/articles?populate[cover_image][populate][0]=cover_image&fields[0]=title,slug&pagination[page]=1`
-        )
-            .then((response) => response.json())
-            .then((res) => setArticles(res.data));
-    }, []);
+        response ? setArticles(response.data) : [];
+    }, [response]);
 
     return (
         <ArticlesWrapper>
-            {articles.map((article) => {
-                return <ArticleCard key={article.id} article={article} />;
-            })}
+            {loading ? (
+                <h1>Loading...</h1>
+            ) : (
+                articles.map((article) => {
+                    return <ArticleCard key={article.id} article={article} />;
+                })
+            )}
+            {error ? <h1>Error</h1> : null}
         </ArticlesWrapper>
     );
 };

@@ -31,6 +31,9 @@ export const baseTheme = {
         xl: '@media (min-width: 1200px)',
         xxl: '@media (min-width: 1400px)',
     },
+    navigation: {
+        height: '8rem',
+    },
 };
 
 export const lightTheme = {
