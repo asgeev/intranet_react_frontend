@@ -112,11 +112,11 @@ import styled from 'styled-components';
 const ArticlesWrapper = styled.div`
     margin-top: 8rem;
     max-width: ${({ theme }) => theme.containerSize.sm};
+    flex-grow: 3;
 `;
 
 const StyledArticleCard = styled.div`
     background-color: white;
-    /* max-width: 600px; */
 `;
 
 const ArticleCard = ({ article }) => (

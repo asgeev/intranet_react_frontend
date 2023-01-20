@@ -33,7 +33,8 @@ export const baseTheme = {
     },
 };
 
-export const lightTheme = {color: {
+export const lightTheme = {
+    color: {
         bodyColor: 'white',
         textColor: '#333333',
         primary: '#333333',
@@ -41,9 +42,11 @@ export const lightTheme = {color: {
     },
 };
 
-export const darkTheme = {color: {
+export const darkTheme = {
+    color: {
         bodyColor: '#2f2f2f',
         textColor: '#e5e5e5',
         primary: '#e5e5e5',
         secondary: '',
-    },};
+    },
+};

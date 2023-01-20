@@ -27,7 +27,7 @@
     "no-unused-vars": "warn",
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off",
-    "object-curly-newline": ["warn", { "minProperties": 2}],
+    "object-curly-newline": "off",
     "no-useless-escape": "off",
     "import/prefer-default-export": "off",
     "import/no-default-export": "warn",
