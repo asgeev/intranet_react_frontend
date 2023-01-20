@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useState, useEffect } from 'react';
 import { FiCloudRain } from 'react-icons/fi';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { StyledFiMoon, StyledFiSun, NavBar } from './Navigation.styled';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 
@@ -11,6 +11,16 @@ const RightSection = styled.div`
     justify-content: center;
     align-items: center;
     gap: 2rem;
+`;
+
+const move = keyframes`
+  from {
+    transform: translateX(200%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
 `;
 
 const Menu = styled.div`
@@ -26,7 +36,7 @@ const Menu = styled.div`
     align-items: center;
     justify-content: center;
     height: calc(100vh - 8rem);
-    width: 100%;
+    animation: ${move} 0.2s ease-in-out;
 
     ${({ theme }) => theme.mq.lg} {
         position: static;
@@ -63,6 +73,7 @@ const StyledNavLink = styled(NavLink)`
 
 export const Navigation = ({ setIsDarkTheme, isDarkTheme }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const { pathname } = useLocation();
     const [navigation, setNavigation] = useState([]);
 
     const toggleIsDark = () => {
@@ -73,6 +84,10 @@ export const Navigation = ({ setIsDarkTheme, isDarkTheme }) => {
         setIsOpen((prev) => !prev);
     };
 
+    const closeMenu = () => {
+        setIsOpen(false);
+    };
+
     useEffect(() => {
         fetch(
             'http://localhost:1337/api/navigation/render/main-navigation?type=TREE'
@@ -81,9 +96,13 @@ export const Navigation = ({ setIsDarkTheme, isDarkTheme }) => {
             .then((data) => setNavigation(data));
     }, []);
 
+    useEffect(() => {
+        setIsOpen(false);
+    }, [pathname]);
+
     return (
         <NavBar>
-            <StyledNavLink to="/">
+            <StyledNavLink to="/" onClick={closeMenu}>
                 <FiCloudRain size="3rem" />
             </StyledNavLink>
             <Menu isOpen={isOpen}>

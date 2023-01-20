@@ -142,7 +142,7 @@ export const Articles = () => {
             {loading ? (
                 <h1>Loading...</h1>
             ) : (
-                articles.map((article) => {
+                articles?.map((article) => {
                     return <ArticleCard key={article.id} article={article} />;
                 })
             )}

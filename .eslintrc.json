@@ -25,9 +25,9 @@
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "no-unused-vars": "warn",
-    "arrow-body-style": "off",
-    "prefer-arrow-callback": "off",
-    "object-curly-newline": "off",
+    // "arrow-body-style": "off",
+    // "prefer-arrow-callback": "off",
+    // "object-curly-newline": "off",
     "no-useless-escape": "off",
     "import/prefer-default-export": "off",
     "import/no-default-export": "warn",
@@ -41,6 +41,6 @@
     "jsx-a11y/label-has-associated-control": "warn",
     "react/require-default-props": "off",
     "react-hooks/exhaustive-deps": "off",
-    "no-unused-expressions": "off"
-  }
+    "no-unused-expressions": "off",
+    "max-len": ["warn", { "code": 120 }] }
 }
