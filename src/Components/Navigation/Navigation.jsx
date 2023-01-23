@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { useState, useEffect } from 'react';
-import { FiCloudRain } from 'react-icons/fi';
+import { FiCloudRain, FiMenu, FiX } from 'react-icons/fi';
 import { NavLink, useLocation } from 'react-router-dom';
 import { StyledFiMoon, StyledFiSun, NavBar } from './Navigation.styled';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
@@ -80,12 +80,14 @@ export const Navigation = ({ setIsDarkTheme, isDarkTheme }) => {
         setIsDarkTheme((prev) => !prev);
     };
 
-    const toggleNavigation = () => {
-        setIsOpen((prev) => !prev);
+    const closeMenu = () => {
+        document.body.style.overflow = 'auto';
+        setIsOpen(false);
     };
 
-    const closeMenu = () => {
-        setIsOpen(false);
+    const openMenu = () => {
+        document.body.style.overflow = 'hidden';
+        setIsOpen(true);
     };
 
     useEffect(() => {
@@ -108,10 +110,7 @@ export const Navigation = ({ setIsDarkTheme, isDarkTheme }) => {
             <Menu isOpen={isOpen}>
                 <MenuItems>
                     {navigation.map(({ id, title, slug }) => (
-                        <StyledNavLink
-                            key={id}
-                            to={`page/${slug}`}
-                            onClick={toggleNavigation}>
+                        <StyledNavLink key={id} to={`page/${slug}`}>
                             {title}
                         </StyledNavLink>
                     ))}
@@ -123,7 +122,13 @@ export const Navigation = ({ setIsDarkTheme, isDarkTheme }) => {
                 ) : (
                     <StyledFiMoon size="3rem" onClick={toggleIsDark} />
                 )}
-                <BurgerMenu toggleNavigation={toggleNavigation} />
+                <BurgerMenu>
+                    {isOpen ? (
+                        <FiX size="3rem" onClick={closeMenu} />
+                    ) : (
+                        <FiMenu size="3rem" onClick={openMenu} />
+                    )}
+                </BurgerMenu>
             </RightSection>
         </NavBar>
     );
